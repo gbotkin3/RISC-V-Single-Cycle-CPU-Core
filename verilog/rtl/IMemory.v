@@ -30,7 +30,7 @@ module IMemory
   wire [31:0] instruction;
   
   always @ (posedge clk or negedge rst_n) begin
-    if (!rst_n) begin
+    if (!rst_n && !la_instruction_write) begin
     
       /*
       RISC-V Instruction Format Broken Out Into Binary Below:

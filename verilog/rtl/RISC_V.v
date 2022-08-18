@@ -15,29 +15,42 @@ module RISC_V
 );
 
   wire clk;
-  wire rst;
+  wire rst_n;
 
   // LA
   
+  assign la_data_out[127:96] = 0;
+  
   // LA To Access and Read DRAM
   wire [7:0] la_dram_select;
-  wire [31:0] la_read_data;
+  wire [31:0] la_read_dram_data;
   
   assign la_dram_select[7:0] = la_data_in[44:37];
-  assign la_data_out[31:0] = la_read_data[31:0];
+  assign la_data_out[63:32] = la_read_dram_data[31:0];
   
   // LA To Access, Read, and Write IRAM
   wire la_instruction_write;
   wire [3:0] la_instruction_select;
   wire [31:0] la_instruction_input;
+  wire [31:0] la_read_iram_data;
   
   assign la_instruction_write = la_data_in[36];
   assign la_instruction_select[3:0] = la_data_in[35:32];
   assign la_instruction_input[31:0] = la_data_in[31:0];
   
-  // Assuming LA probes [46:45] are for controlling the clk & reset  
-  assign clk = la_data_in[46];
-  assign rst = la_data_in[45];
+  assign la_data_out[31:0] = la_read_iram_data[31:0];
+  
+  // LA To Acces and Read Registers
+  
+  wire [4:0] la_reg_select;
+  wire [31:0] la_read_reg_data;
+  
+  assign la_reg_select[4:0] = la_data_in[49:45];
+  assign la_data_out[95:64] = la_read_reg_data[31:0];  
+  
+  // Assuming LA probes [51:50] are for controlling the clk & reset  
+  assign clk = la_data_in[51];
+  assign rst_n = la_data_in[50];
     
 	// Control Wires
 	wire mem_write;
@@ -124,7 +137,7 @@ module RISC_V
 	.b_type_immediate(b_type_immediate),
 	.u_type_immediate(u_type_immediate),
 	.j_type_immediate(j_type_immediate),
-  .la_instruction_read()
+  .la_instruction_read(la_read_iram_data)
 
 	);
 
@@ -140,7 +153,7 @@ module RISC_V
   .la_dram_select(la_dram_select),
 	//Outputs
 	.read_data(read_data),
-  .la_read_data(la_read_data)
+  .la_read_data(la_read_dram_data)
 	);
 
 	ALU ALU (
@@ -162,11 +175,14 @@ module RISC_V
 	.u_type_immediate(u_type_immediate),
 	.j_type_immediate(j_type_immediate),
 	.read_data(read_data),
+  .la_reg_select(la_reg_select),  
+  
 		
 	//Outputs
 	.alu_output(alu_output),
 	.rs1_data(rs1_data),
-	.rs2_data(rs2_data)
+	.rs2_data(rs2_data),
+  .la_read_data(la_read_reg_data)  
 	);
   
  endmodule

@@ -54,13 +54,28 @@ set ::env(MACRO_PLACEMENT_CFG) $script_dir/macro.cfg
 ### Black-box verilog and views
 set ::env(VERILOG_FILES_BLACKBOX) "\
 	$::env(CARAVEL_ROOT)/verilog/rtl/defines.v \
-	$script_dir/../../verilog/rtl/user_proj_example.v"
+	$script_dir/../../verilog/rtl/RISC_V.v \
+	$script_dir/../../verilog/rtl/PC.v \
+	$script_dir/../../verilog/rtl/IMemory.v \
+	$script_dir/../../verilog/rtl/DMemory.v \
+	$script_dir/../../verilog/rtl/Control.v \
+	$script_dir/../../verilog/rtl/ALU.v"
 
 set ::env(EXTRA_LEFS) "\
-	$script_dir/../../lef/user_proj_example.lef"
+	$script_dir/../../lef/RISC_V.lef \
+	$script_dir/../../verilog/rtl/PC.lef \
+	$script_dir/../../verilog/rtl/IMemory.lef \
+	$script_dir/../../verilog/rtl/DMemory.lef \
+	$script_dir/../../verilog/rtl/Control.lef \
+	$script_dir/../../verilog/rtl/ALU.lef"
 
 set ::env(EXTRA_GDS_FILES) "\
-	$script_dir/../../gds/user_proj_example.gds"
+	$script_dir/../../gds/RISC_V.gds \
+	$script_dir/../../verilog/rtl/PC.gds \
+	$script_dir/../../verilog/rtl/IMemory.gds \
+	$script_dir/../../verilog/rtl/DMemory.gds \
+	$script_dir/../../verilog/rtl/Control.gds \
+	$script_dir/../../verilog/rtl/ALU.gds"
 
 # set ::env(GLB_RT_MAXLAYER) 5
 set ::env(RT_MAX_LAYER) {met4}

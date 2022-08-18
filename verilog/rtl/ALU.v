@@ -19,9 +19,13 @@ module ALU
   input wire  [31:0] j_type_immediate,
   input wire  [31:0] read_data,
   
+  input  wire  [4:0] la_reg_select, //Used to select reg to read from  
+  
   output wire [31:0] alu_output,
   output wire [31:0] rs1_data,
-  output wire [31:0] rs2_data
+  output wire [31:0] rs2_data,
+  
+  output wire [31:0]  la_read_data //Data read from reg  
   
 );
   //Setup 32 32-bit registers
@@ -49,6 +53,8 @@ module ALU
       end
     end
   end
+  
+  assign la_read_data = Data_Registers[la_reg_select];  
   
   assign rs1_data = Data_Registers[rs1];
   assign rs2_data = Data_Registers[rs2];

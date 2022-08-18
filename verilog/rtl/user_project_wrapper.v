@@ -92,7 +92,7 @@ RISC_V riscv (
 
     .la_data_in(la_data_in),
     .la_data_out(la_data_out),
-    .la_oenb (la_oenb),
+    .la_oenb (la_oenb)
 
 );
 
