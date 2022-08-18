@@ -61,21 +61,9 @@ set ::env(VERILOG_FILES_BLACKBOX) "\
 	$script_dir/../../verilog/rtl/Control.v \
 	$script_dir/../../verilog/rtl/ALU.v"
 
-set ::env(EXTRA_LEFS) "\
-	$script_dir/../../lef/RISC_V.lef \
-	$script_dir/../../verilog/rtl/PC.lef \
-	$script_dir/../../verilog/rtl/IMemory.lef \
-	$script_dir/../../verilog/rtl/DMemory.lef \
-	$script_dir/../../verilog/rtl/Control.lef \
-	$script_dir/../../verilog/rtl/ALU.lef"
+set ::env(EXTRA_LEFS) ""
 
-set ::env(EXTRA_GDS_FILES) "\
-	$script_dir/../../gds/RISC_V.gds \
-	$script_dir/../../verilog/rtl/PC.gds \
-	$script_dir/../../verilog/rtl/IMemory.gds \
-	$script_dir/../../verilog/rtl/DMemory.gds \
-	$script_dir/../../verilog/rtl/Control.gds \
-	$script_dir/../../verilog/rtl/ALU.gds"
+set ::env(EXTRA_GDS_FILES) ""
 
 # set ::env(GLB_RT_MAXLAYER) 5
 set ::env(RT_MAX_LAYER) {met4}
