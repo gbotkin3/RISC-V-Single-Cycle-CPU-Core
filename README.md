@@ -14,6 +14,6 @@ Desires and Goals to improve upon the core in the future (not in any specific or
 1. Implement a multi-cycle core
 2. Implement a pipe-lined core
 3. Implement a cache for data memory
-4. Implement remaning extenstions to classify as RV32G
+4. Implement remaning extensions to classify as RV32G
 
 Questions and Inquiries can be directed to gbotkin1999@gmail.com
