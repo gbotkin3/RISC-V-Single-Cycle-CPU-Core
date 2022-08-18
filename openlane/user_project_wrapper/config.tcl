@@ -47,7 +47,7 @@ set ::env(CLOCK_PERIOD) "10"
 ### Macro PDN Connections
 set ::env(FP_PDN_MACRO_HOOKS) "\
 	mprj vccd1 vssd1 vccd1 vssd1"
-
+  
 ### Macro Placement
 set ::env(MACRO_PLACEMENT_CFG) $script_dir/macro.cfg
 
@@ -60,10 +60,6 @@ set ::env(VERILOG_FILES_BLACKBOX) "\
 	$script_dir/../../verilog/rtl/DMemory.v \
 	$script_dir/../../verilog/rtl/Control.v \
 	$script_dir/../../verilog/rtl/ALU.v"
-
-set ::env(EXTRA_LEFS) ""
-
-set ::env(EXTRA_GDS_FILES) ""
 
 # set ::env(GLB_RT_MAXLAYER) 5
 set ::env(RT_MAX_LAYER) {met4}
