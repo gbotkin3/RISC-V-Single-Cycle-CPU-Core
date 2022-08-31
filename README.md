@@ -9,6 +9,7 @@ Known Issues:
 1. ECALL / EBREAK are not operational
 2. Control and Status Register Instructions are also not working
 3. Timer and Counters as a result of 2 are also not working
+4. Memory is currently writing on the next cycle instead of current cycle.
 
 Desires and Goals to improve upon the core in the future (not in any specific order):
 1. Implement a multi-cycle core
