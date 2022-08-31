@@ -82,17 +82,19 @@ module user_project_wrapper #(
 /* User project is instantiated  here   */
 /*--------------------------------------*/
 
-RISC_V riscv (
-`ifdef USE_POWER_PINS
-	.vccd1(vccd1),	// User area 1 1.8V power
-	.vssd1(vssd1),	// User area 1 digital ground
-`endif
+RISC_V RISC_V (
+
+  `ifdef USE_POWER_PINS
+    .vccd1(vccd1),	// User area 1 1.8V power
+    .vssd1(vssd1),	// User area 1 digital ground
+  `endif
 
     // Logic Analyzer
 
     .la_data_in(la_data_in),
     .la_data_out(la_data_out),
-    .la_oenb (la_oenb)
+    .la_oenb (la_oenb),
+    .clk(la_data_in[48])
 
 );
 
