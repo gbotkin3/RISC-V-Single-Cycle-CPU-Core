@@ -34,8 +34,8 @@ set ::env(DESIGN_NAME) user_project_wrapper
 
 ## Source Verilog Files
 set ::env(VERILOG_FILES) "\
-	$::env(CARAVEL_ROOT)/verilog/rtl/defines.v \
-	$script_dir/../../verilog/rtl/user_project_wrapper.v"
+	$::env(CARAVEL_ROOT)/verilog/rtl/defines.sv \
+	$script_dir/../../verilog/rtl/user_project_wrapper.sv"
   
 ## Clock configurations
 set ::env(CLOCK_PORT) "user_clock2"
@@ -50,8 +50,8 @@ set ::env(LVS_CONNECT_BY_LABEL) 1
 
 ### Black-box verilog and views
 set ::env(VERILOG_FILES_BLACKBOX) "\
-	$::env(CARAVEL_ROOT)/verilog/rtl/defines.v \
-	$script_dir/../../verilog/rtl/user_proj_example.v"
+	$::env(CARAVEL_ROOT)/verilog/rtl/defines.sv \
+	$script_dir/../../verilog/rtl/RISC_V.sv"
   
 set ::env(EXTRA_LEFS) "\
 	$script_dir/../../lef/RISC_V.lef"
