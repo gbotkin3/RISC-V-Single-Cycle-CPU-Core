@@ -94,7 +94,7 @@ RISC_V RISC_V (
     .la_data_in(la_data_in),
     .la_data_out(la_data_out),
     .la_oenb (la_oenb),
-    .clk(la_data_in[48])
+    .clk(user_clock2)
 
 );
 

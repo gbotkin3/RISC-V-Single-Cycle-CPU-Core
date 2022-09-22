@@ -61,7 +61,7 @@ module RISC_V
   assign la_reg_select[4:0] = la_data_in[46:42];
   assign la_data_out[95:64] = la_read_reg_data[31:0];  
   
-  // Assuming LA probes [48:47] are for controlling the clk & reset  
+  // Assuming LA probes [47] are for controlling the reset  
   assign rst_n = la_data_in[47];
     
 	// Control Wires

@@ -169,7 +169,7 @@
 + wbs_dat_o[28] wbs_dat_o[29] wbs_dat_o[2] wbs_dat_o[30] wbs_dat_o[31] wbs_dat_o[3]
 + wbs_dat_o[4] wbs_dat_o[5] wbs_dat_o[6] wbs_dat_o[7] wbs_dat_o[8] wbs_dat_o[9] wbs_sel_i[0]
 + wbs_sel_i[1] wbs_sel_i[2] wbs_sel_i[3] wbs_stb_i wbs_we_i
-XRISC_V la_data_in[48] la_data_in[0] la_data_in[100] la_data_in[101] la_data_in[102]
+XRISC_V user_clock2 la_data_in[0] la_data_in[100] la_data_in[101] la_data_in[102]
 + la_data_in[103] la_data_in[104] la_data_in[105] la_data_in[106] la_data_in[107]
 + la_data_in[108] la_data_in[109] la_data_in[10] la_data_in[110] la_data_in[111] la_data_in[112]
 + la_data_in[113] la_data_in[114] la_data_in[115] la_data_in[116] la_data_in[117]

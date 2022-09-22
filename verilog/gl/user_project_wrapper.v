@@ -54,7 +54,7 @@ module user_project_wrapper (user_clock2,
  input [3:0] wbs_sel_i;
 
 
- RISC_V RISC_V (.clk(la_data_in[48]),
+ RISC_V RISC_V (.clk(user_clock2),
     .vccd1(vccd1),
     .vssd1(vssd1),
     .la_data_in({la_data_in[127],
