@@ -34,14 +34,14 @@ set ::env(DESIGN_NAME) user_project_wrapper
 
 ## Source Verilog Files
 set ::env(VERILOG_FILES) "\
-	$::env(CARAVEL_ROOT)/verilog/rtl/defines.sv \
-	$script_dir/../../verilog/rtl/user_project_wrapper.sv"
+	$::env(CARAVEL_ROOT)/verilog/rtl/defines.v \
+	$script_dir/../../verilog/rtl/user_project_wrapper.v"
   
 ## Clock configurations
 set ::env(CLOCK_PORT) "user_clock2"
 set ::env(CLOCK_NET) "mprj.clk"
 
-set ::env(CLOCK_PERIOD) "20"
+set ::env(CLOCK_PERIOD) 1000
 
 set ::env(FP_PDN_MACRO_HOOKS) "\
 	RISC_V vccd1 vssd1 vccd1 vssd1"
@@ -50,7 +50,7 @@ set ::env(LVS_CONNECT_BY_LABEL) 1
 
 ### Black-box verilog and views
 set ::env(VERILOG_FILES_BLACKBOX) "\
-	$::env(CARAVEL_ROOT)/verilog/rtl/defines.sv \
+	$::env(CARAVEL_ROOT)/verilog/rtl/defines.v \
 	$script_dir/../../verilog/rtl/RISC_V.sv"
   
 set ::env(EXTRA_LEFS) "\
@@ -58,9 +58,6 @@ set ::env(EXTRA_LEFS) "\
 
 set ::env(EXTRA_GDS_FILES) "\
 	$script_dir/../../gds/RISC_V.gds"  
-
-set ::env(PL_MACRO_CHANNEL) "100 100"
-set ::env(PL_MACRO_HALO) "200 200"  
 
 # set ::env(GLB_RT_MAXLAYER) 5
 set ::env(RT_MAX_LAYER) {met4}

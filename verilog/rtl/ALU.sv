@@ -14,7 +14,11 @@
 module ALU
 //IO
 (
-
+  `ifdef USE_POWER_PINS
+      inout vccd1,	// User area 1 1.8V supply
+      inout vssd1,	// User area 1 digital ground
+  `endif
+  
   input logic         clk,
   input logic         rst_n,
   input logic  [31:0] pc,
@@ -30,21 +34,21 @@ module ALU
   input logic         immediate_sel,
   input logic  [31:0] read_data,
   
-  input  logic  [4:0] la_reg_select, //Used to select reg to read from  
+  input  logic [4:0]  la_reg_select, //Used to select logic to read from  
   
   output logic [31:0] alu_output,
   output logic [31:0] rs1_data,
   output logic [31:0] rs2_data,
   
-  output logic [31:0] la_read_data //Data read from reg  
+  output logic [31:0] la_read_data //Data read from logic  
   
 );
 
   //Setup 32 32-bit registers
-  reg [31:0] Data_Registers[31:0];
+  logic [31:0] Data_Registers[31:0];
   
   integer i;
-  always_ff @(posedge clk) begin
+  always_ff @(negedge clk) begin
     if (!rst_n) begin
       for (i=0;i<32;i=i+1)
         Data_Registers[i] = 0;
@@ -66,15 +70,18 @@ module ALU
     end
   end
   
-  assign la_read_data = Data_Registers[la_reg_select];  
+  always_ff @(posedge clk) begin 
+    la_read_data <= Data_Registers[la_reg_select];  
+  end
   
   // ALU
+  always_ff @(posedge clk) begin  
+    rs1_data <= Data_Registers[rs1];
+    rs2_data <= Data_Registers[rs2];
+  end  
   
-  assign rs1_data = Data_Registers[rs1];
-  assign rs2_data = Data_Registers[rs2];
-  
-  reg [5:0] aluctl;
-  reg [31:0] alu_result;
+  logic [5:0] aluctl;
+  logic [31:0] alu_result;
   
   always_comb begin
     

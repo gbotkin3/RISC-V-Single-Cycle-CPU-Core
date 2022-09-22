@@ -14,7 +14,11 @@
 module control
 //IO
 (
-
+  `ifdef USE_POWER_PINS
+      inout vccd1,	// User area 1 1.8V supply
+      inout vssd1,	// User area 1 digital ground
+  `endif
+  
   input  logic       clk,
   input  logic       rst_n,
   input  logic [5:0] instruction_type,

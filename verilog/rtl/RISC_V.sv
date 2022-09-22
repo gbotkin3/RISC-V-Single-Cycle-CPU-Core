@@ -12,18 +12,19 @@
 // SPDX-License-Identifier: Apache-2.0
 
 module RISC_V 
-// IO
+//IO
 (
   `ifdef USE_POWER_PINS
       inout vccd1,	// User area 1 1.8V supply
       inout vssd1,	// User area 1 digital ground
   `endif
 
-    // Logic Analyzer Signals
-    input  logic [127:0] la_data_in,
-    output logic [127:0] la_data_out,
-    input  logic [127:0] la_oenb,
-    input  logic clk
+  // Logic Analyzer Signals
+  input  logic [127:0] la_data_in,
+  output logic [127:0] la_data_out,  
+  input  logic [127:0] la_oenb,
+  
+  input  logic clk
 
 );
 

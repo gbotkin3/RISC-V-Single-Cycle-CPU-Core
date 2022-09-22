@@ -1,5 +1,5 @@
 # Caravel user project includes
--v $(USER_PROJECT_VERILOG)/rtl/user_project_wrapper.v	     
+-v $(USER_PROJECT_VERILOG)/rtl/user_project_wrapper.sv	     
 -v $(USER_PROJECT_VERILOG)/rtl/RISC_V.sv
 -v $(USER_PROJECT_VERILOG)/rtl/control.sv
 -v $(USER_PROJECT_VERILOG)/rtl/pc.sv

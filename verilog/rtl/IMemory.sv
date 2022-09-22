@@ -14,7 +14,11 @@
 module IMemory
 //IO
 (
-
+  `ifdef USE_POWER_PINS
+      inout vccd1,	// User area 1 1.8V supply
+      inout vssd1,	// User area 1 digital ground
+  `endif
+  
   input  logic        clk,
   input  logic        rst_n,
   input  logic [31:0] pc,
@@ -39,7 +43,7 @@ module IMemory
   logic [31:0] iram[0:16];
   logic [31:0] instruction;
   
-  always_ff  @(posedge clk) begin
+  always_ff  @(negedge clk) begin
     if (!rst_n && !la_instruction_write) begin
     
       /*
@@ -76,14 +80,15 @@ module IMemory
       iram[15] <= 32'b 1_1111100010_1_11111111_00000_1101111; //jal x0, -60 (reset to 0)
       
     end else if (la_instruction_write) begin
-      iram[la_instruction_select] = la_instruction_input;
+      iram[la_instruction_select] <= la_instruction_input;
     end
   end
-  
-  assign la_instruction_read = iram[la_instruction_select];
-  
-  //read instruction
-  assign instruction = iram[(pc>>2)];
+ 
+  always_ff  @(posedge clk) begin 
+    la_instruction_read <= iram[la_instruction_select];
+    instruction <= iram[(pc>>2)];
+  end
+
   
   logic r_type;
   logic i_type;

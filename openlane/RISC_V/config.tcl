@@ -20,47 +20,27 @@ set ::env(DESIGN_NAME) RISC_V
 
 set ::env(VERILOG_FILES) "\
 	$::env(CARAVEL_ROOT)/verilog/rtl/defines.v \
-	$script_dir/../../verilog/rtl/RISC_V.sv"
-  
-set ::env(VERILOG_FILES_BLACKBOX) "\
-	$::env(CARAVEL_ROOT)/verilog/rtl/defines.v \
+	$script_dir/../../verilog/rtl/RISC_V.sv \
 	$script_dir/../../verilog/rtl/ALU.sv \
 	$script_dir/../../verilog/rtl/control.sv \
 	$script_dir/../../verilog/rtl/DMemory.sv \
 	$script_dir/../../verilog/rtl/IMemory.sv \
 	$script_dir/../../verilog/rtl/pc.sv"
-
-set ::env(EXTRA_LEFS) "\
-	$script_dir/../../lef/ALU.lef \
-	$script_dir/../../lef/control.lef \
-	$script_dir/../../lef/DMemory.lef \
-	$script_dir/../../lef/IMemory.lef \
-	$script_dir/../../lef/pc.lef "
-
-set ::env(EXTRA_GDS_FILES) "\
-	$script_dir/../../gds/ALU.gds \
-	$script_dir/../../gds/control.gds \
-	$script_dir/../../gds/DMemory.gds \
-	$script_dir/../../gds/IMemory.gds \
-	$script_dir/../../gds/pc.gds"  
-
+  
 set ::env(DESIGN_IS_CORE) 0
 
 set ::env(CLOCK_PORT) "clk"
-set ::env(CLOCK_PERIOD) "20"
+set ::env(CLOCK_PERIOD) 1000
 
-set ::env(PL_BASIC_PLACEMENT) 0
+set ::env(FP_SIZING) "absolute"
+set ::env(DIE_AREA) "0 0 2500 2500"
+
 set ::env(PL_TARGET_DENSITY) "0.52"
 set ::env(GLB_RT_ADJUSTMENT) "0.25"
-set ::env(FP_CORE_UTIL) 10
-#set ::env(SYNTH_STRATEGY) "AREA 0"
 
-set ::env(SYNTH_MAX_FANOUT) 25
-set ::env(PL_RESIZER_MAX_SLEW_MARGIN) 40
-set ::env(GLB_RESIZER_MAX_SLEW_MARGIN) 20
+set ::env(SYNTH_MAX_FANOUT) 10
 
-set ::env(PL_RESIZER_MAX_CAP_MARGIN) 40
-set ::env(GLB_RESIZER_MAX_CAP_MARGIN) 20
+set ::env(ROUTING_CORES) 4
 
 # Maximum layer used for routing is metal 4.
 # This is because this macro will be inserted in a top level (user_project_wrapper) 

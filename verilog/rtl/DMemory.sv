@@ -14,6 +14,11 @@
 module DMemory
 //IO
 (
+  `ifdef USE_POWER_PINS
+      inout vccd1,	// User area 1 1.8V supply
+      inout vssd1,	// User area 1 digital ground
+  `endif
+
   input  logic         clk,
   input  logic         rst_n,
   input  logic         mem_write,
@@ -34,7 +39,7 @@ module DMemory
   
   //Write to Memory
   integer i;
-  always_ff @(posedge clk) begin
+  always_ff @(negedge clk) begin
     if (!rst_n) begin
       for (i=0;i<15;i=i+1) begin
         dram[i] = 32'h00000000;
@@ -50,7 +55,9 @@ module DMemory
   end
   
   //Read from Memory
-  assign read_data = dram[memory_address];
-  assign la_read_data = dram[la_dram_select];
+  always_ff  @(posedge clk) begin 
+    read_data <= dram[memory_address];
+    la_read_data <= dram[la_dram_select];
+  end
 
 endmodule
