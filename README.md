@@ -12,8 +12,10 @@ Known Issues:
 
 Desires and Goals to improve upon the core for future shuttles:
 1. Implementing pipeling
-2. Implementing a cache for data and instruction memory
-3. Implement remaining extensions to classify as RV32G
+2. Implementing data fowarding
+3. Implementing Branch Prediction
+4. Implementing Out of Order Execution
+5. Implement remaining extensions to classify as RV32G
 
 Questions and Inquiries can be directed to gbotkin1999@gmail.com
 
